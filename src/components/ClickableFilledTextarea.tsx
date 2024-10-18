@@ -39,7 +39,11 @@ function ClickableFilledTextarea({
   // 按钮点击事件处理函数
   const onButtonClick = (option: ButtonOption) => {
     // 获取到 textarea 的 dom 元素
-    const textAreaDom = textareaEl.current.resizableTextArea.textArea
+    const textAreaDom = textareaEl.current?.resizableTextArea?.textArea
+    // 处理 textAreaDom 为 undefined 的情况
+    if (!textAreaDom) {
+      return
+    }
     // 获取到选中内容的开始光标位置
     const selectionStartIndex = textAreaDom.selectionStart
     // 获取到选中内容的结束光标位置
